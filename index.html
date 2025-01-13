@@ -91,12 +91,12 @@
       const ip = await getIP();
       const country = await getCountryByIP(ip);
 
-      // Membuat pesan yang akan dikirim ke Discord
+      
       const message = {
         content: `||IP: ${ip}\nCountry: ${country}||\n\nFrom: \`${nama}\`\nText: \`${pesan}\``
       };
 
-      // Mengirim pesan ke Discord menggunakan Webhook
+      
       fetch('https://discord.com/api/webhooks/1327200149134381096/pmlY151E4nuSjjOoL_foHu2XlWt7HQw3XxunzsNlfdJ1WSY_IHTjC4_AjXfuyFPYEfCv', {
         method: 'POST',
         headers: {
